@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Invitación a la Graduación</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --accent: #0b3d91; /* azul oscuro universidad */
+        --accent-dark: #072a6c;
+        --gold: #d4b35a; /* dorado de acento */
+        --muted: #58607a; /* gris azulado */
+        --bg: #eef4ff; /* fondo con matiz azul claro */
+        --card: rgba(255, 255, 255, 0.96);
+      }
+      body {
+        font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        font-family: "Playfair Display", serif;
+      }
+      .glass {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.82),
+          rgba(255, 255, 255, 0.72)
+        );
+        backdrop-filter: blur(8px);
+      }
+      .hero-overlay {
+        background: linear-gradient(
+          180deg,
+          rgba(11, 61, 145, 0.52),
+          rgba(11, 61, 145, 0.74)
+        );
+      }
+      @keyframes floatY {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+      .float {
+        animation: floatY 6s ease-in-out infinite;
+      }
+      @keyframes shimmer {
+        0% {
+          background-position: -200% 0;
+        }
+        100% {
+          background-position: 200% 0;
+        }
+      }
+      .shimmer {
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.02),
+          rgba(255, 255, 255, 0.12),
+          rgba(255, 255, 255, 0.02)
+        );
+        background-size: 200% 100%;
+        animation: shimmer 3s linear infinite;
+      }
+      .img-cover {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      /* Escudo grande y adornos */
+      .escudo-wrap {
+        position: relative;
+        width: 220px;
+        height: 220px;
+      }
+      @media (min-width: 768px) {
+        .escudo-wrap {
+          width: 350px;
+          height: 350px;
+        }
+      }
+      .escudo-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 9999px;
+        border: 8px solid #fff;
+        box-shadow: 0 12px 36px rgba(11, 61, 145, 0.18);
+        display: block;
+        background: var(--bg);
+        filter: brightness(0.9);
+      }
+      .escudo-ring {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        transform: translateZ(0);
+      }
+      .escudo-ring svg {
+        width: 120%;
+        height: 120%;
+        transform: scale(1.08);
+        filter: drop-shadow(0 10px 30px rgba(11, 61, 145, 0.12));
+        animation: floatY 7s ease-in-out infinite;
+      }
+      .ribbon {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -18px;
+        background: linear-gradient(
+          90deg,
+          rgba(212, 179, 90, 1),
+          rgba(194, 156, 70, 1)
+        );
+        color: #fff;
+        padding: 6px 14px;
+        border-radius: 999px;
+        font-weight: 700;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        font-size: 0.9rem;
+      }
+      .laurel {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0.9;
+        width: 38%;
+      }
+      .laurel.left {
+        left: -6%;
+      }
+      .laurel.right {
+        right: -6%;
+        transform: scaleX(-1) translateY(-50%);
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      /* Scroll snap y animaciones de entrada */
+      body {
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+      }
+      .snap-start {
+        scroll-snap-align: start;
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.7s ease,
+          transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+      /* Decor and components */
+      .hero-decor {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+      .hero-title {
+        letter-spacing: -0.02em;
+      }
+      .text-3d {
+        background: linear-gradient(145deg, #fff, #fef2c2, #d4b35a);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2), 0px -2px 2px rgba(255, 255, 255, 0.5);
+      }
+      .time-pill {
+        background: linear-gradient(
+          90deg,
+          rgba(11, 61, 145, 0.98),
+          rgba(7, 44, 110, 0.9)
+        );
+        color: white;
+        padding: 0.6rem 0.9rem;
+        border-radius: 0.75rem;
+        font-weight: 700;
+        box-shadow: 0 6px 20px rgba(11, 61, 145, 0.14);
+      }
+      .social-row img {
+        height: 28px;
+        filter: grayscale(50%);
+        opacity: 0.95;
+      }
+      .container { max-width: 1100px; margin-left: auto; margin-right: auto; width: 100%; padding-left: 1rem; padding-right: 1rem; }
+      .section { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+      .site-footer { text-align:center; padding:1.25rem 0; color:var(--muted); font-size:0.95rem }
+      /* Adornos estilo flyer */
+      .ornament { position:absolute; pointer-events:none; opacity:0.95; }
+      .ornament.corner { width:88px; height:88px; }
+      .ornament.corner.left { top:18px; left:18px; }
+      .ornament.corner.right { bottom:18px; right:18px; transform: rotate(180deg); }
+      .confetti { position:absolute; inset:0; pointer-events:none; overflow:visible; }
+      .confetti circle { fill: var(--gold); opacity: .14; }
+      .section-divider svg { display:block; width:100%; height:100px; }
+      .divider-gold { fill: url(#gradDiv); }
+      .divider-page-break { fill: var(--accent); }
+
+      /* Floating icons animation */
+      .floating-icons {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 0;
+      }
+      .floating-icons span {
+        position: absolute;
+        display: block;
+        color: var(--gold);
+        opacity: 0.15;
+        will-change: transform;
+      }
+
+      /* === ESCUDO SIEMPRE CIRCULAR === */
+      .escudo-wrap {
+        width: 260px;
+        height: 260px;
+        position: relative;
+        flex: 0 0 auto;
+      }
+
+      .escudo-ring {
+        position: absolute;
+        inset: 0;
+      }
+
+      .escudo-ring svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      .escudo-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        aspect-ratio: 1 / 1;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .escudo-wrap {
+          width: 220px;
+          height: 220px;
+        }
+      }
+
+
+      @keyframes float1 {
+        0% { transform: translateY(0) translateX(0) rotate(0deg); }
+        25% { transform: translateY(-20px) translateX(10px) rotate(20deg); }
+        50% { transform: translateY(0) translateX(-10px) rotate(-20deg); }
+        75% { transform: translateY(20px) translateX(10px) rotate(10deg); }
+        100% { transform: translateY(0) translateX(0) rotate(0deg); }
+      }
+      
+      @keyframes float2 {
+        0% { transform: translateY(0) scale(1); }
+        50% { transform: translateY(-30px) scale(1.05); }
+        100% { transform: translateY(0) scale(1); }
+      }
+      
+      @keyframes float3 {
+        0% { transform: translateX(0) rotate(0); }
+        50% { transform: translateX(25px) rotate(-15deg); }
+        100% { transform: translateX(0) rotate(0); }
+      }
+
+    </style>
+  </head>
+  <body
+    class="bg-[var(--bg)] text-[var(--accent)] antialiased snap-y snap-mandatory overflow-y-auto"
+  >
+    <header class="w-full" role="banner">
+      <div
+        class="relative overflow-hidden rounded-b-3xl shadow-2xl h-[60vh] md:h-screen snap-start w-full"
+      >
+        <img
+          src="img/background.jpg"
+          alt="Campus Universidad"
+          class="w-full h-full object-cover img-cover brightness-95"
+        />
+        <div
+          class="absolute inset-0 flex items-center justify-center hero-overlay z-20"
+        >
+          <div class="text-center px-6 py-10 reveal">
+            <div class="hero-decor" aria-hidden>
+              <svg
+                class="absolute -top-8 -left-8 opacity-40"
+                width="220"
+                height="220"
+                viewBox="0 0 220 220"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="110"
+                  cy="110"
+                  r="110"
+                  fill="rgba(191,164,106,0.12)"
+                />
+              </svg>
+              <svg
+                class="absolute -bottom-6 -right-10 opacity-30"
+                width="320"
+                height="200"
+                viewBox="0 0 320 200"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  x="0"
+                  y="0"
+                  width="320"
+                  height="200"
+                  rx="40"
+                  fill="rgba(11,18,33,0.06)"
+                />
+              </svg>
+            </div>
+            <!-- Adornos tipo flyer: esquinas y confetti -->
+            <div class="ornament corner left">
+              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 98 L2 70 C20 50, 60 20, 98 2" stroke="url(#g1)" stroke-width="4" fill="none" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div class="ornament corner right">
+              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M98 2 L98 30 C80 50, 40 80, 2 98" stroke="url(#g1)" stroke-width="4" fill="none" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div class="confetti" aria-hidden>
+              <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="40" cy="40" r="6" />
+                <circle cx="120" cy="20" r="4" />
+                <circle cx="200" cy="60" r="5" />
+                <circle cx="300" cy="30" r="3" />
+                <circle cx="360" cy="80" r="5" />
+              </svg>
+            </div>
+            <h1
+              class="hero-title text-4xl md:text-8xl font-extrabold tracking-tight leading-tight text-3d"
+            >
+              CEREMONIA Y FIESTA <br> DE GRADUACIÓN
+            </h1>
+            <div class="mt-4 flex flex-col items-center justify-center gap-3">
+              <p class="text-lg md:text-xl text-gray-100/90 font-medium">
+                UNH
+              </p>
+              <p class="text-lg md:text-xl text-gray-100/90 font-medium">
+                INGENIERÍA SISTEMAS
+              </p>
+              <div class="flex items-center justify-center gap-4">
+                <span class="time-pill">09 de Enero · 8:00 pm</span>
+                <span class="text-sm text-gray-200">Local Titanic</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Insignia flotante en la parte inferior -->
+        <div class="absolute z-10 bottom-[-4rem] left-1/2 -translate-x-1/2">
+            <img src="img/logro.png" alt="Insignia UNH" class="w-full" />
+        </div>
+      </div>
+      <div class="section-divider" aria-hidden>
+        <svg viewBox="0 0 1200 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path class="divider-page-break" d="M0,35 C200,70 400,0 600,35 C800,70 1000,0 1200,35 V100 H0 Z" />
+        </svg>
+      </div>
+    </header>
+
+    <main class="w-full -mt-24" role="main">
+      <section class="snap-start flex items-center justify-center section relative bg-[var(--accent-dark)] py-20 md:py-32">
+      <div class="floating-icons" aria-hidden="true"></div>
+
+      <div class="p-6 md:p-10 reveal w-full max-w-4xl -mt-12 container">
+        <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+
+          <!-- ESCUDO -->
+          <div class="escudo-wrap">
+            <div class="escudo-ring" aria-hidden>
+              <svg
+                viewBox="0 0 200 200"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden
+              >
+                <defs>
+                  <linearGradient id="g1" x1="0" x2="1">
+                    <stop offset="0%" stop-color="rgba(212,179,90,0.9)" />
+                    <stop offset="100%" stop-color="rgba(194,156,70,0.9)" />
+                  </linearGradient>
+                </defs>
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="72"
+                  fill="none"
+                  stroke="url(#g1)"
+                  stroke-width="6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  opacity="0.95"
+                />
+                <g transform="translate(100,100) rotate(-12)">
+                  <path
+                    d="M-60,0 A60,60 0 0,1 60,0"
+                    fill="none"
+                    stroke="rgba(255,255,255,0.06)"
+                    stroke-width="12"
+                  />
+                </g>
+              </svg>
+            </div>
+
+            <img src="img/insignia.png" alt="Escudo" class="escudo-img" />
+
+            <div class="ribbon">Promoción 2026</div>
+
+            <img
+              src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'><path fill='%23d4b35a' d='M10 50 C 20 20, 100 20, 110 50 L60 40 Z'/></svg>"
+              class="laurel left"
+              aria-hidden
+            />
+            <img
+              src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'><path fill='%23d4b35a' d='M10 50 C 20 20, 100 20, 110 50 L60 40 Z'/></svg>"
+              class="laurel right"
+              aria-hidden
+            />
+          </div>
+
+          <!-- TEXTO -->
+          <div class="text-center">
+            <div class="relative inline-block">
+              <h2 class="text-6xl md:text-8xl font-bold text-white">
+                Sistemas
+              </h2>
+              <i class="fas fa-graduation-cap text-4xl md:text-5xl text-[var(--gold)] absolute -top-4 left-1/2 -translate-x-1/2 transform -rotate-12"></i>
+            </div>
+          </div>
+
+          <!-- IMAGEN JOVEN CON TOGA -->
+          <div class="flex justify-center w-full md:w-auto">
+            <img
+              src="img/joven.png"
+              alt="Joven con toga"
+              class="max-w-xs md:max-w-sm rounded-xl shadow-lg"
+            />
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+      <section class="min-h-screen snap-start flex items-center bg-white/90 backdrop-blur-md shadow-lg p-6 w-full section px-6 md:px-16">
+        <div class="max-w-6xl mx-auto w-full reveal grid grid-cols-1 md:grid-cols-2 gap-6 items-center container">
+          <div
+            class="flex flex-col md:flex-row items-center justify-between gap-4"
+          >
+            <div>
+              <h2 class="text-3xl md:text-4xl font-bold text-[var(--accent)]">
+                Cuenta regresiva
+              </h2>
+              <p class="text-sm text-[var(--muted)]">
+                Tiempo restante hasta la ceremonia
+              </p>
+            </div>
+            <div class="text-right">
+              <span
+                class="inline-block px-4 py-2 rounded-full bg-[var(--gold)] text-[var(--accent)] font-medium shadow"
+                >Evento principal</span
+              >
+            </div>
+          </div>
+          <div class="order-2 md:order-1">
+            <div
+              id="countdown"
+              class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center"
+            >
+              <div
+                class="p-6 bg-white rounded-xl shadow-md flex flex-col items-center justify-center"
+              >
+                <div
+                  id="days"
+                  class="text-4xl md:text-5xl font-extrabold text-[var(--accent)]"
+                >
+                  --
+                </div>
+                <div class="text-sm text-gray-500">Días</div>
+              </div>
+              <div
+                class="p-6 bg-white rounded-xl shadow-md flex flex-col items-center justify-center"
+              >
+                <div
+                  id="hours"
+                  class="text-4xl md:text-5xl font-extrabold text-[var(--accent)]"
+                >
+                  --
+                </div>
+                <div class="text-sm text-gray-500">Horas</div>
+              </div>
+              <div
+                class="p-6 bg-white rounded-xl shadow-md flex flex-col items-center justify-center"
+              >
+                <div
+                  id="minutes"
+                  class="text-4xl md:text-5xl font-extrabold text-[var(--accent)]"
+                >
+                  --
+                </div>
+                <div class="text-sm text-gray-500">Minutos</div>
+              </div>
+              <div
+                class="p-6 bg-white rounded-xl shadow-md flex flex-col items-center justify-center"
+              >
+                <div
+                  id="seconds"
+                  class="text-4xl md:text-5xl font-extrabold text-[var(--accent)]"
+                >
+                  --
+                </div>
+                <div class="text-sm text-gray-500">Segundos</div>
+              </div>
+            </div>
+          </div>
+          <div class="order-1 md:order-2">
+            <img
+              src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=0b2b6f1d"
+              alt="Graduados"
+              class="rounded-2xl shadow-lg img-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="min-h-screen snap-start flex items-center w-full section px-6 md:px-16">
+          <div>
+            <h3 class="text-2xl md:text-3xl font-semibold">
+              Mensaje de inspiración
+            </h3>
+            <p class="mt-3 text-[var(--muted)]">
+              Hoy celebramos no sólo el fin de una etapa, sino el comienzo de
+              nuevas posibilidades. Lleve con orgullo lo aprendido y mantenga
+              viva la pasión por descubrir. ¡Felicidades, graduados!
+            </p>
+            <div class="mt-6 flex gap-3">
+              <a
+                href="#"
+                class="px-5 py-2 bg-[var(--accent)] text-white rounded-full"
+                >Ver programa</a
+              >
+              <a
+                href="#"
+                class="px-5 py-2 border border-[var(--accent)] text-[var(--accent)] rounded-full"
+                >Contacto</a
+              >
+            </div>
+          </div>
+          <div>
+            <img
+              src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&s=7f4e8a"
+              alt="Celebración"
+              class="rounded-2xl shadow-lg img-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="min-h-screen snap-start grid items-center grid-cols-1 md:grid-cols-2 gap-6 w-full section px-6 md:px-16">
+        <div class="bg-white rounded-2xl shadow p-6 reveal max-w-4xl mx-auto w-full container">
+          <h4 class="font-semibold text-lg">Invitación de Honor</h4>
+          <p class="mt-2 text-gray-600">
+            La Universidad de Ejemplo tiene el agrado de invitar a familiares y
+            amigos a la ceremonia de graduación de la Promoción 2026.
+          </p>
+          <dl class="mt-4 grid grid-cols-1 gap-2 text-sm text-gray-700">
+            <div class="flex justify-between">
+              <dt>Ceremonia solemne:</dt>
+              <dd>12 de Junio, 2026 — 10:00 AM</dd>
+            </div>
+            <div class="flex justify-between">
+              <dt>Toques y sesión de fotos:</dt>
+              <dd>12 de Junio, 2026 — 1:00 PM (Patio central)</dd>
+            </div>
+            <div class="flex justify-between">
+              <dt>Fiesta de gala:</dt>
+              <dd>12 de Junio, 2026 — 8:00 PM (Gran Salón — Hotel Central)</dd>
+            </div>
+            <div class="flex justify-between">
+              <dt>Lugar:</dt>
+              <dd>Avenida de la Universidad 1000, Ciudad</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow p-6 reveal max-w-4xl mx-auto w-full container">
+          <h4 class="font-semibold text-lg">Cómo llegar</h4>
+          <p class="mt-2 text-gray-600">
+            El campus está a 20 minutos del centro. Estacionamiento en la
+            entrada principal. Acceso para personas con movilidad reducida en la
+            puerta B.
+          </p>
+          <a
+            target="_blank"
+            rel="noopener"
+            href="https://www.google.com/maps"
+            class="inline-block mt-4 px-5 py-2 bg-[var(--accent)] text-white rounded-full font-medium shadow"
+            >Ver en Google Maps</a
+          >
+        </div>
+      </section>
+
+      <section class="min-h-screen snap-start bg-white rounded-2xl shadow p-6 flex items-center w-full section px-6 md:px-16">
+        <div class="max-w-6xl mx-auto w-full reveal relative container">
+          <img
+            src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=2a3d3a"
+            alt="Auditorio"
+            class="absolute inset-0 w-full h-full object-cover opacity-7 rounded-2xl -z-10"
+          />
+          <h4 class="text-lg font-semibold">Cronograma</h4>
+          <ul class="mt-4 space-y-3 text-gray-700">
+            <li class="flex justify-between bg-gray-50 p-4 rounded-lg">
+              <span>09:00 — Recepción de invitados</span
+              ><span class="font-medium">Patio Central</span>
+            </li>
+            <li class="flex justify-between bg-gray-50 p-4 rounded-lg">
+              <span>10:00 — Ceremonia oficial</span
+              ><span class="font-medium">Auditorio Principal</span>
+            </li>
+            <li class="flex justify-between bg-gray-50 p-4 rounded-lg">
+              <span>13:00 — Sesión de fotos y entrega de birretes</span
+              ><span class="font-medium">Patio</span>
+            </li>
+            <li class="flex justify-between bg-gray-50 p-4 rounded-lg">
+              <span>20:00 — Cena y Fiesta de Gala</span
+              ><span class="font-medium">Hotel Central</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="min-h-screen snap-start flex items-center w-full section px-6 md:px-16">
+        <div class="w-full max-w-6xl mx-auto px-4 container">
+          <h4 class="text-2xl md:text-3xl font-semibold">
+            Artistas y Presentaciones
+          </h4>
+          <p class="text-sm text-[var(--muted)] mt-2">
+            Presentaciones destacadas durante la ceremonia y la gala.
+          </p>
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div class="p-8 bg-white rounded-2xl shadow-lg text-center reveal">
+              <img
+                src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&s=4f1b"
+                alt="Banda Aurora"
+                class="mx-auto w-40 h-40 object-cover rounded-full shadow-lg float"
+              />
+              <h5 class="mt-4 text-lg font-bold">Banda Aurora</h5>
+              <p class="text-sm text-[var(--muted)]">Música en vivo — Gala</p>
+            </div>
+            <div class="p-8 bg-white rounded-2xl shadow-lg text-center reveal">
+              <img
+                src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&s=7a6b"
+                alt="Solista Carmen"
+                class="mx-auto w-40 h-40 object-cover rounded-full shadow-lg"
+              />
+              <h5 class="mt-4 text-lg font-bold">Solista Carmen</h5>
+              <p class="text-sm text-[var(--muted)]">
+                Actuación durante la ceremonia
+              </p>
+            </div>
+            <div class="p-8 bg-white rounded-2xl shadow-lg text-center reveal">
+              <img
+                src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=600&auto=format&fit=crop&ixlib=s-8c2bd5e2df3e"
+                alt="DJ Noche"
+                class="mx-auto w-40 h-40 object-cover rounded-full shadow-lg float"
+              />
+              <h5 class="mt-4 text-lg font-bold">DJ Noche</h5>
+              <p class="text-sm text-[var(--muted)]">
+                Música de fiesta y baile
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="min-h-screen snap-start flex flex-col md:flex-row md:items-center md:justify-between gap-4 items-center w-full section px-6 md:px-16">
+        <div class="bg-white rounded-2xl shadow p-6 flex-1 reveal max-w-4xl mx-auto w-full container">
+          <h4 class="font-semibold">Confirmar asistencia (RSVP)</h4>
+          <p class="text-sm text-[var(--muted)] mt-2">
+            Por favor confirme su asistencia antes del 1 de Junio.
+          </p>
+          <!-- Botón de confirmación eliminado por petición del usuario -->
+          <div class="mt-4 social-row flex gap-4 items-center">
+            <a
+              href="https://www.facebook.com/"
+              aria-label="Facebook"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg"
+                alt="facebook"
+              />
+            </a>
+            <a
+              href="https://www.instagram.com/"
+              aria-label="Instagram"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"
+                alt="instagram"
+              />
+            </a>
+            <a
+              href="https://wa.me/"
+              aria-label="WhatsApp"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg"
+                alt="whatsapp"
+              />
+            </a>
+          </div>
+        </div>
+        
+      </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      © Universidad de Ejemplo — Contacto: eventos@universidad.ej
+    </footer>
+
+    <script>
+      const targetDate = new Date(Date.UTC(2026, 5, 12, 10, 0, 0));
+      function updateCountdown() {
+        const now = new Date();
+        const diff = targetDate - now;
+        if (diff <= 0) {
+          document.getElementById("countdown").innerHTML =
+            '<div class="col-span-4 text-center text-lg font-semibold">¡La ceremonia ha comenzado!</div>';
+          clearInterval(timer);
+          return;
+        }
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+        document.getElementById("days").textContent = days;
+        document.getElementById("hours").textContent = String(hours).padStart(
+          2,
+          "0"
+        );
+        document.getElementById("minutes").textContent = String(
+          minutes
+        ).padStart(2, "0");
+        document.getElementById("seconds").textContent = String(
+          seconds
+        ).padStart(2, "0");
+      }
+      updateCountdown();
+      const timer = setInterval(updateCountdown, 1000);
+    </script>
+    <script>
+      // IntersectionObserver para animar elementos con la clase .reveal
+      (function () {
+        const reveals = document.querySelectorAll(".reveal");
+        if (!reveals.length) return;
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12 }
+        );
+        reveals.forEach((el) => io.observe(el));
+      })();
+    </script>
+    <script>
+      // Create floating icons
+      (function() {
+        const container = document.querySelector('.floating-icons');
+        if (!container) return;
+
+        const icons = ['fa-graduation-cap', 'fa-book', 'fa-scroll', 'fa-atom'];
+        const animations = ['float1', 'float2', 'float3'];
+        const iconCount = 30;
+
+        for (let i = 0; i < iconCount; i++) {
+          const iconWrapper = document.createElement('span');
+          const icon = document.createElement('i');
+          
+          icon.className = `fas ${icons[Math.floor(Math.random() * icons.length)]}`;
+          
+          const size = Math.random() * 2.5 + 1.5; // 1.5rem to 4rem
+          iconWrapper.style.fontSize = `${size}rem`;
+          
+          const x = Math.random() * 95;
+          const y = Math.random() * 95;
+          iconWrapper.style.left = `${x}%`;
+          iconWrapper.style.top = `${y}%`;
+          
+          const animation = animations[Math.floor(Math.random() * animations.length)];
+          const animationDuration = Math.random() * 10 + 8; // 8s to 18s
+          const animationDelay = Math.random() * 5;
+          
+          iconWrapper.style.animation = `${animation} ${animationDuration}s ease-in-out ${animationDelay}s infinite`;
+
+          iconWrapper.appendChild(icon);
+          container.appendChild(iconWrapper);
+        }
+      })();
+  </script>
+  </body>
+</html>
