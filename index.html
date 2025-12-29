@@ -541,7 +541,9 @@
               </p>
               <div class="flex items-center justify-center gap-4">
                 <span class="time-pill">09 de Enero · 8:00 pm</span>
-                <span class="text-sm text-gray-200">Local Titanic</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=-12.40075,-74.871011" target="_blank" rel="noopener noreferrer">
+                  <span class="text-sm text-gray-200 hover:text-[var(--gold)] transition-colors">Local Titanic</span>
+                </a>
               </div>
             </div>
           </div>
@@ -815,7 +817,7 @@
                   <div class="md:w-1/2 md:pl-8 text-left">
                     <div class="p-6 bg-white/5 border border-white/10 rounded-xl shadow-lg backdrop-blur-md">
                       <h3 class="font-bold text-xl">Ceremonia</h3>
-                      <p class="text-gray-400 mt-1">Local Titanic</p>
+                      <a href="https://www.google.com/maps/search/?api=1&query=-12.40075,-74.871011" target="_blank" rel="noopener noreferrer" class="text-gray-400 mt-1 hover:text-[var(--gold)] transition-colors block">Local Titanic</a>
                     </div>
                   </div>
                   <div class="md:w-1/2 md:pr-8 mt-4 md:mt-0 text-right md:text-right">
@@ -837,7 +839,7 @@
                   <div class="md:w-1/2 md:pr-8 text-right">
                     <div class="p-6 bg-white/5 border border-white/10 rounded-xl shadow-lg backdrop-blur-md">
                       <h3 class="font-bold text-xl">Fiesta de Gala</h3>
-                      <p class="text-gray-400 mt-1">Local Titanic</p>
+                      <a href="https://www.google.com/maps/search/?api=1&query=-12.40075,-74.871011" target="_blank" rel="noopener noreferrer" class="text-gray-400 mt-1 hover:text-[var(--gold)] transition-colors block">Local Titanic</a>
                     </div>
                   </div>
                   <div class="md:w-1/2 md:pl-8 mt-4 md:mt-0">
@@ -860,7 +862,7 @@
                   <div class="md:w-1/2 md:pl-8 text-left">
                     <div class="p-6 bg-white/5 border border-white/10 rounded-xl shadow-lg backdrop-blur-md">
                       <h3 class="font-bold text-xl">Presentacion de Artistas</h3>
-                      <p class="text-gray-400 mt-1">Local Titanic</p>
+                      <a href="https://www.google.com/maps/search/?api=1&query=-12.40075,-74.871011" target="_blank" rel="noopener noreferrer" class="text-gray-400 mt-1 hover:text-[var(--gold)] transition-colors block">Local Titanic</a>
                     </div>
                   </div>
                   <div class="md:w-1/2 md:pr-8 mt-4 md:mt-0 text-right md:text-right">
@@ -879,6 +881,14 @@
               
 
             </div>
+          </div>
+
+          <div class="mt-16 text-center">
+            <a href="https://www.google.com/maps/search/?api=1&query=-12.40075,-74.871011" target="_blank" rel="noopener noreferrer" class="inline-block bg-[var(--gold)] text-[var(--accent-dark)] font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:scale-105 transition-transform duration-300">
+              <i class="fas fa-map-marker-alt mr-2"></i>
+              Cómo Llegar
+            </a>
+            <p class="text-sm text-gray-400 mt-3">Toca el botón para ver la ubicación en Google Maps.</p>
           </div>
         </div>
       </section>
@@ -960,11 +970,19 @@
           </div>
         </div>
         
-        <div class="footer-bottom reveal">
-          <p>© 2025 Promoción Ingeniería de Sistemas · Universidad Nacional de Huancavelica</p>
-          <p>Diseñado con ❤️ por la promoción para nuestras familias.</p>
+        <div class="footer-bottom reveal border-t border-white/10 mt-8 pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-gray-300">
+          <p class="text-center md:text-left">
+            © 2025 <span class="font-semibold text-white">Promoción Ingeniería de Sistemas</span> · 
+            Universidad Nacional de Huancavelica
+          </p>
+
+          <p class="flex items-center gap-1">
+            Diseñado por 
+            <span class="text-red-500"></span> 
+      <span class="font-semibold text-white">HSoft</span>
+          </p>
         </div>
-      </div>
+
     </footer>
 
     <script>
