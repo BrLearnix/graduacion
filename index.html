@@ -506,10 +506,10 @@
         <div class="container mx-auto px-6 reveal text-center relative z-10">
             <i class="fas fa-calendar-alt text-5xl text-[var(--gold)] mb-4"></i>
             <h2 class="text-5xl md:text-7xl font-bold font-serif text-shadow-lg">
-                El Gran Día se Acerca
+                Cuenta Regresiva
             </h2>
             <p class="text-lg text-gray-300 mt-2 max-w-2xl mx-auto">
-                Faltan pocas horas para el inicio de una nueva etapa. Acompañanos en la cuenta regresiva para celebrar juntos este logro.
+                Faltan pocas horas para celebrar juntos este gran logro. Acompáñanos en la cuenta regresiva.
             </p>
 
             <div id="countdown" class="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-8 max-w-4xl mx-auto">
@@ -542,36 +542,44 @@
     </section>
 
       <!-- // SECCIÓN MENSAJE DE INSPIRACIÓN -->
-      <section class="min-h-screen snap-start flex items-center w-full section px-6 md:px-16">
-          <div>
-            <h3 class="text-2xl md:text-3xl font-semibold">
-              Mensaje de inspiración
-            </h3>
-            <p class="mt-3 text-[var(--muted)]">
-              Hoy celebramos no sólo el fin de una etapa, sino el comienzo de
-              nuevas posibilidades. Lleve con orgullo lo aprendido y mantenga
-              viva la pasión por descubrir. ¡Felicidades, graduados!
-            </p>
-            <div class="mt-6 flex gap-3">
-              <a
-                href="#"
-                class="px-5 py-2 bg-[var(--accent)] text-white rounded-full"
-                >Ver programa</a
-              >
-              <a
-                href="#"
-                class="px-5 py-2 border border-[var(--accent)] text-[var(--accent)] rounded-full"
-                >Contacto</a
-              >
+      <section class="min-h-screen snap-start flex items-center w-full section relative bg-gray-900 text-white overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1531306733264-c2763c035201?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80" alt="Fondo Estrellado" class="w-full h-full object-cover opacity-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80 to-transparent"></div>
+        </div>
+        
+        <div class="section-divider absolute top-0 left-0 w-full overflow-hidden leading-none" style="transform: translateY(-1px);">
+          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-24">
+            <path d="M1200 120L0 120 0 0 1200 0 1200 120z" class="fill-current text-gray-900"></path>
+            <path d="M1200 0L0 0 0 60 1200 120 1200 0z" class="fill-current text-[var(--accent-dark)] opacity-50"></path>
+            <path d="M1200 0L0 0 0 40 1200 90 1200 0z" class="fill-current text-[var(--accent-dark)]"></path>
+          </svg>
+        </div>
+
+        <div class="container mx-auto px-6 text-center relative z-10 reveal">
+            <div class="inline-block relative">
+                <i class="fas fa-star text-3xl text-[var(--gold)] absolute -top-4 -left-4 opacity-70 -rotate-12"></i>
+                <i class="fas fa-star text-2xl text-[var(--gold)] absolute -bottom-4 -right-4 opacity-70 rotate-12"></i>
+                <h2 class="text-5xl md:text-7xl font-bold font-serif text-3d">
+                    Promoción <span class="year">2025</span>
+                </h2>
             </div>
-          </div>
-          <div>
-            <img
-              src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&s=7f4e8a"
-              alt="Celebración"
-              class="rounded-2xl shadow-lg img-cover"
-            />
-          </div>
+            <style>
+                .year {
+                    font-size: 1.5em; /* Aumenta el tamaño del año */
+                    vertical-align: middle; /* Alinea verticalmente con el texto */
+                }
+            </style>
+            <blockquote class="mt-8 max-w-3xl mx-auto">
+                <p class=" md:text-1xl text-gray-100 leading-loose font-medium">
+                    "Después de años de esfuerzo, aprendizaje y muchas experiencias,  llegó el momento de celebrar un gran logro.Con mucha alegría y gratitud, quiero compartir contigo un logro muy especial"
+                </p>
+                
+            </blockquote>
+            <div class="mt-12 relative left-1/2 -translate-x-1/2 w-screen">
+                <img src="img/promo.jpg" alt="Foto de los integrantes de la promoción" class="w-full h-auto object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent shimmer"></div>
+            </div>
         </div>
       </section>
 
