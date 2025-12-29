@@ -348,10 +348,111 @@
         0%, 100% { transform: scale(1); }
         50% { transform: scale(1.03); }
       }
-      .subtle-zoom {
-        animation: subtle-zoom-in 20s ease-in-out infinite;
-      }
-    </style>
+            .subtle-zoom {
+              animation: subtle-zoom-in 20s ease-in-out infinite;
+            }
+                  .graduate-item {
+                      font-family: 'Playfair Display', serif;
+                      font-size: 1.1rem; /* smaller font for mobile */
+                      color: var(--accent-dark);
+                      padding: 0.85rem 1rem; /* more padding */
+                      position: relative;
+                      text-align: center;
+                      transition: color 0.3s ease, background-color 0.3s ease;
+                      border-bottom: 1px solid #0000001a;
+                  }
+                  .graduate-item:last-child {
+                      border-bottom: none;
+                  }
+                  .graduate-item:hover {
+                      color: var(--gold);
+                      background-color: #ffffff;
+                  }
+            
+                  @media (min-width: 640px) { /* sm breakpoint */
+                      .graduate-item {
+                          font-size: 1.25rem;
+                          padding: 0.75rem 0;
+                          border-bottom: 2px solid transparent;
+                          border-image: linear-gradient(to right, transparent, var(--gold), transparent) 1;
+                          background-color: transparent;
+                      }
+                      .graduate-item:last-child {
+                          border-bottom: 2px solid transparent; /* has to be explicit */
+                          border-image: linear-gradient(to right, transparent, var(--gold), transparent) 1;
+                      }
+                      
+                                        .graduate-item:hover {
+                                            color: var(--gold);
+                                            background-color: transparent;
+                                        }
+                                    }
+                      
+                                    /* Footer v2 */
+                                    .site-footer-v2 {
+                                      background-color: var(--accent-dark);
+                                      color: rgba(255, 255, 255, 0.7);
+                                      position: relative;
+                                      z-index: 10;
+                                    }
+                                    .footer-title {
+                                      font-family: 'Playfair Display', serif;
+                                      font-size: 1.75rem;
+                                      font-weight: 700;
+                                      color: var(--gold);
+                                      margin-bottom: 0.75rem;
+                                    }
+                                    .footer-text {
+                                      color: rgba(255, 255, 255, 0.6);
+                                      max-width: 400px; /* Evita que el texto se estire demasiado */
+                                    }
+                                    .sponsor-logos .logo-placeholder {
+                                      background-color: rgba(255, 255, 255, 0.05);
+                                      border: 1px dashed rgba(255, 255, 255, 0.2);
+                                      padding: 0.5rem 1rem;
+                                      border-radius: 8px;
+                                      display: flex;
+                                      align-items: center;
+                                      justify-content: center;
+                                      height: 60px;
+                                      min-width: 100px;
+                                      font-size: 0.9rem;
+                                      color: rgba(255, 255, 255, 0.4);
+                                      transition: background-color 0.3s ease;
+                                    }
+                                    .sponsor-logos .logo-placeholder:hover {
+                                        background-color: rgba(255, 255, 255, 0.1);
+                                    }
+                                    .collaborator-list {
+                                      list-style: none;
+                                      padding: 0;
+                                    }
+                                    .collaborator-list li {
+                                      position: relative;
+                                      padding-left: 1.5em;
+                                      margin-bottom: 0.5rem;
+                                    }
+                                    .collaborator-list li::before {
+                                      content: '·';
+                                      position: absolute;
+                                      left: 0;
+                                      color: var(--gold);
+                                      font-weight: bold;
+                                      font-size: 1.2em;
+                                      line-height: 1;
+                                    }
+                                    .footer-bottom {
+                                      margin-top: 3rem;
+                                      padding-top: 1.5rem;
+                                      border-top: 1px solid rgba(255, 255, 255, 0.1);
+                                      text-align: center;
+                                      font-size: 0.9rem;
+                                      color: rgba(255, 255, 255, 0.5);
+                                    }
+                                    .footer-bottom p {
+                                      margin: 0.25rem 0;
+                                    }
+                                </style>
   </head>
   <body
     class="bg-[var(--bg)] text-[var(--accent)] antialiased snap-y snap-mandatory overflow-y-auto"
@@ -500,6 +601,34 @@
         </div>
       </div>
     </section>
+
+<!-- // SECCIÓN DE INTEGRANTES -->
+<section class="bg-[var(--bg)] py-20 snap-start">
+  <div class="container mx-auto px-6 text-center reveal">
+    <i class="fas fa-users text-5xl text-[var(--gold)] mb-4"></i>
+    <h2 class="text-5xl font-bold font-serif text-[var(--accent)] mb-4">Nuestros Graduados</h2>
+    <p class="text-lg text-gray-600 mb-16 max-w-3xl mx-auto">Con orgullo y alegría, presentamos a los distinguidos miembros de la Promoción 2025 de Ingeniería de Sistemas que han culminado con éxito su formación académica.</p>
+    
+    <div class="max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+            <div class="graduate-item">Enriquez Soto Deivid</div>
+            <div class="graduate-item">Ticllacuri Paytan Jean Carlos</div>
+            <div class="graduate-item">Galarza Huaman Elkin Alex</div>
+            <div class="graduate-item">Poma de la Cruz Brayan</div>
+            <div class="graduate-item">Paredes Merino Jhon Antonio</div>
+            <div class="graduate-item">Tito Molina Yudber</div>
+            <div class="graduate-item">Tapara Esplana Anderson Herbert</div>
+            <div class="graduate-item">Espinoza campos Renzo Fabricio</div>
+            <div class="graduate-item">Carvajal Huanay Guching Menly</div>
+            <div class="graduate-item">Davila Ruiz Yesari Yeyli</div>
+            <div class="graduate-item">Inga Aparco Alexander</div>
+            <div class="graduate-item">Huaman Enriquez Lucila</div>
+            <div class="graduate-item">Huaira Ancalli Bernardo Amador</div>
+            <div class="graduate-item">Fernandez Zevallos Jhon Abel</div>
+        </div>
+    </div>
+  </div>
+</section>
 
     <!-- // SECCIÓN CUENTA REGRESIVA -->
     <section class="min-h-screen snap-start flex items-center bg-[var(--accent-dark)] text-white w-full section relative overflow-hidden">
@@ -711,7 +840,7 @@
                   <div class="md:w-1/2 md:pl-8 mt-4 md:mt-0">
                     <div class="flex items-center gap-4">
                       <div class="flex-shrink-0 w-12 h-12 rounded-full bg-[var(--gold)] text-[var(--accent-dark)] flex items-center justify-center text-xl">
-                        <i class="fas fa-camera-retro"></i>
+                        <i class="fa-solid fa-champagne-glasses"></i>
                       </div>
                       <span class="font-bold text-xl font-serif">09:00 PM</span>
                     </div>
@@ -735,7 +864,7 @@
                      <div class="flex items-center justify-end gap-4">
                       <span class="font-bold text-xl font-serif">10:00 PM</span>
                       <div class="flex-shrink-0 w-12 h-12 rounded-full bg-[var(--gold)] text-[var(--accent-dark)] flex items-center justify-center text-xl">
-                        <i class="fas fa-music"></i>
+                        <i class="fa-solid fa-martini-glass-citrus"></i>
                       </div>
                     </div>
                   </div>
@@ -752,100 +881,87 @@
       </section>
 
       <!-- // SECCIÓN ARTISTAS Y PRESENTACIONES -->
-      <section class="min-h-screen snap-start flex items-center w-full section px-6 md:px-16">
-        <div class="w-full max-w-6xl mx-auto px-4 container">
-          <h4 class="text-2xl md:text-3xl font-semibold">
-            Artistas y Presentaciones
-          </h4>
-          <p class="text-sm text-[var(--muted)] mt-2">
-            Presentaciones destacadas durante la ceremonia y la gala.
-          </p>
-          <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div class="p-8 bg-white rounded-2xl shadow-lg text-center reveal">
-              <img
-                src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&s=4f1b"
-                alt="Banda Aurora"
-                class="mx-auto w-40 h-40 object-cover rounded-full shadow-lg float"
-              />
-              <h5 class="mt-4 text-lg font-bold">Banda Aurora</h5>
-              <p class="text-sm text-[var(--muted)]">Música en vivo — Gala</p>
-            </div>
-            <div class="p-8 bg-white rounded-2xl shadow-lg text-center reveal">
-              <img
-                src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&s=7a6b"
-                alt="Solista Carmen"
-                class="mx-auto w-40 h-40 object-cover rounded-full shadow-lg"
-              />
-              <h5 class="mt-4 text-lg font-bold">Solista Carmen</h5>
-              <p class="text-sm text-[var(--muted)]">
-                Actuación durante la ceremonia
-              </p>
-            </div>
-            <div class="p-8 bg-white rounded-2xl shadow-lg text-center reveal">
-              <img
-                src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=600&auto=format&fit=crop&ixlib=s-8c2bd5e2df3e"
-                alt="DJ Noche"
-                class="mx-auto w-40 h-40 object-cover rounded-full shadow-lg float"
-              />
-              <h5 class="mt-4 text-lg font-bold">DJ Noche</h5>
-              <p class="text-sm text-[var(--muted)]">
-                Música de fiesta y baile
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- // SECCIÓN CONFIRMACIÓN DE ASISTENCIA -->
-      <section class="min-h-screen snap-start flex flex-col md:flex-row md:items-center md:justify-between gap-4 items-center w-full section px-6 md:px-16">
-        <div class="bg-white rounded-2xl shadow p-6 flex-1 reveal max-w-4xl mx-auto w-full container">
-          <h4 class="font-semibold">Confirmar asistencia (RSVP)</h4>
-          <p class="text-sm text-[var(--muted)] mt-2">
-            Por favor confirme su asistencia antes del 1 de Junio.
-          </p>
-          <!-- Botón de confirmación eliminado por petición del usuario -->
-          <div class="mt-4 social-row flex gap-4 items-center">
-            <a
-              href="https://www.facebook.com/"
-              aria-label="Facebook"
-              target="_blank"
-              rel="noopener"
-            >
-              <img
-                src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg"
-                alt="facebook"
-              />
-            </a>
-            <a
-              href="https://www.instagram.com/"
-              aria-label="Instagram"
-              target="_blank"
-              rel="noopener"
-            >
-              <img
-                src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"
-                alt="instagram"
-              />
-            </a>
-            <a
-              href="https://wa.me/"
-              aria-label="WhatsApp"
-              target="_blank"
-              rel="noopener"
-            >
-              <img
-                src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg"
-                alt="whatsapp"
-              />
-            </a>
-          </div>
-        </div>
+      <section class="min-h-screen snap-start flex items-center bg-gradient-to-b from-[var(--accent-dark)] to-gray-900 text-white w-full section relative overflow-hidden">
+        <div class="floating-icons" aria-hidden="true" data-icon-count="10"></div>
+        <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
         
+        <div class="container mx-auto px-6 reveal text-center relative z-10">
+          <i class="fas fa-music text-5xl text-[var(--gold)] mb-4"></i>
+          <h2 class="text-5xl md:text-7xl font-bold font-serif text-shadow-lg">
+              Artistas en Escena
+          </h2>
+          <p class="text-lg text-gray-300 mt-2 max-w-3xl mx-auto">
+              Presentaciones estelares para una noche inolvidable.
+          </p>
+
+          <div class="mt-20 max-w-5xl mx-auto flex flex-wrap justify-center items-start gap-16">
+            
+            <!-- Artist 1 -->
+            <div class="relative group w-[480px]">
+              <img
+                src="img/kjantu.png"
+                alt="Banda Aurora"
+                class="w-full h-full object-cover rounded-xl shadow-2xl transition-transform duration-500 group-hover:scale-105 group-hover:rotate-[-3deg]"
+              />
+              <div class="mt-4 text-center">
+                <h5 class="text-xl font-bold font-serif text-shadow-lg"></h5>
+                <p class="text-gray-300 text-sm"></p>
+              </div>
+            </div>
+
+            <!-- Artist 2 -->
+            <div class="relative group w-[480px]">
+              <img
+                src="img/vera.png"
+                alt="DJ Noche"
+                class="w-full h-full object-cover rounded-xl shadow-2xl transition-transform duration-500 group-hover:scale-105 group-hover:rotate-[3deg]"
+              />
+              <div class="mt-4 text-center">
+                <h5 class="text-xl font-bold font-serif text-shadow-lg"></h5>
+                <p class="text-gray-300 text-sm"></p>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </section>
     </main>
 
-    <footer class="site-footer" role="contentinfo">
-      © Universidad de Ejemplo — Contacto: eventos@universidad.ej
+    <footer class="site-footer-v2 snap-start" role="contentinfo">
+      <div class="container mx-auto px-6 py-16">
+        <div class="grid md:grid-cols-2 gap-12 text-center md:text-left">
+          
+          <div class="reveal">
+            <h3 class="footer-title">Auspiciadores</h3>
+            <p class="footer-text mx-auto md:mx-0">
+              Un agradecimiento especial a las empresas y marcas que con su apoyo hicieron posible este magno evento.
+            </p>
+            <div class="sponsor-logos mt-6 flex justify-center md:justify-start gap-x-6 gap-y-4 flex-wrap">
+              <div class="logo-placeholder">Auspiciador</div>
+              <div class="logo-placeholder">Auspiciador</div>
+              <div class="logo-placeholder">Auspiciador</div>
+            </div>
+          </div>
+          
+          <div class="reveal">
+            <h3 class="footer-title">Colaboradores</h3>
+            <p class="footer-text mx-auto md:mx-0">
+              Gracias a los equipos y personas por su invaluable dedicación y esfuerzo en la organización.
+            </p>
+            <ul class="collaborator-list mt-4">
+              <li><strong>Comité Organizador:</strong> Delegados de la Promoción</li>
+              <li><strong>Colaborador:</strong> Kevin Ramirez Huamantica</li>
+              <li><strong>Colaborador:</strong> Juan Espinoza Vera</li>
+              <li><strong>Fotografía y Video:</strong></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="footer-bottom reveal">
+          <p>© 2025 Promoción Ingeniería de Sistemas · Universidad Nacional de Huancavelica</p>
+          <p>Diseñado con ❤️ por la promoción para nuestras familias.</p>
+        </div>
+      </div>
     </footer>
 
     <script>
