@@ -61,23 +61,18 @@
       .float {
         animation: floatY 6s ease-in-out infinite;
       }
-      @keyframes shimmer {
-        0% {
-          background-position: -200% 0;
-        }
-        100% {
-          background-position: 200% 0;
-        }
+      @keyframes shimmer_circ {
+        0%   {background-position: -75% -75%;}
+        25%  {background-position: 175% -75%;}
+        50%  {background-position: 175% 175%;}
+        75%  {background-position: -75% 175%;}
+        100% {background-position: -75% -75%;}
       }
-      .shimmer {
-        background: linear-gradient(
-          90deg,
-          rgba(255, 255, 255, 0.02),
-          rgba(255, 255, 255, 0.12),
-          rgba(255, 255, 255, 0.02)
-        );
-        background-size: 200% 100%;
-        animation: shimmer 3s linear infinite;
+      .shimmer-circular {
+        background-image: radial-gradient(circle at center, rgba(255,255,255,0.06) 0%, transparent 35%);
+        background-repeat: no-repeat;
+        background-size: 150% 150%;
+        animation: shimmer_circ 15s linear infinite;
       }
       .img-cover {
         width: 100%;
@@ -349,6 +344,13 @@
         }
       }
 
+      @keyframes subtle-zoom-in {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.03); }
+      }
+      .subtle-zoom {
+        animation: subtle-zoom-in 20s ease-in-out infinite;
+      }
     </style>
   </head>
   <body
@@ -572,13 +574,16 @@
             </style>
             <blockquote class="mt-8 max-w-3xl mx-auto">
                 <p class=" md:text-1xl text-gray-100 leading-loose font-medium">
-                    "Después de años de esfuerzo, aprendizaje y muchas experiencias,  llegó el momento de celebrar un gran logro.Con mucha alegría y gratitud, quiero compartir contigo un logro muy especial"
+                    "Después de años de esfuerzo, aprendizaje y muchas experiencias,  llegó el momento de celebrar un gran logro. Con mucha alegría y gratitud, quiero compartir contigo un logro muy especial"
                 </p>
                 
             </blockquote>
             <div class="mt-12 relative left-1/2 -translate-x-1/2 w-screen">
-                <img src="img/promo.jpg" alt="Foto de los integrantes de la promoción" class="w-full h-auto object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent shimmer"></div>
+                <div class="relative overflow-hidden rounded-lg">
+                    <img src="img/promo.jpg" alt="Foto de los integrantes de la promoción" class="w-full h-auto object-cover subtle-zoom">
+                    <div class="absolute inset-0 bg-gradient-to-tl from-gray-900 to-transparent shimmer"></div>
+                    <div class="absolute inset-0 border-2 border-white/10 rounded-lg"></div>
+                </div>
             </div>
         </div>
       </section>
