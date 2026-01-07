@@ -424,6 +424,16 @@
                                     .sponsor-logos .logo-placeholder:hover {
                                         background-color: rgba(255, 255, 255, 0.1);
                                     }
+                                    .teacher-item {
+                                      padding-bottom: 0.5rem;
+                                      margin-bottom: 0.5rem;
+                                      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+                                    }
+                                    .teacher-item:last-child {
+                                      border-bottom: none;
+                                      margin-bottom: 0;
+                                      padding-bottom: 0;
+                                    }
                                     .collaborator-list {
                                       list-style: none;
                                       padding: 0;
@@ -432,6 +442,12 @@
                                       position: relative;
                                       padding-left: 1.5em;
                                       margin-bottom: 0.5rem;
+                                      padding-bottom: 0.5rem;
+                                      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+                                    }
+                                    .collaborator-list li:last-child {
+                                      border-bottom: none;
+                                      padding-bottom: 0;
                                     }
                                     .collaborator-list li::before {
                                       content: '·';
@@ -627,12 +643,63 @@
             <div class="graduate-item">Huaira Ancalli, Bernardo Amador</div>
             <div class="graduate-item">Huaman Enriquez, Lucila</div>
             <div class="graduate-item">Inga Aparco, Alexander</div>
+            <div class="graduate-item">López Arias, Henri</div>
+            <div class="graduate-item">López Huaroc, Rubén †</div>
             <div class="graduate-item">Paredes Merino, Jhon Antonio</div>
             <div class="graduate-item">Poma de la Cruz, Brayan</div>
+            <div class="graduate-item">Silva Garcia, Junior</div>
             <div class="graduate-item">Tapara Esplana, Herbert Anderson</div>
             <div class="graduate-item">Ticllacuri Paytan, Jean Carlos</div>
             <div class="graduate-item">Tito Molina, Yudber</div>
         </div>
+    </div>
+  </div>
+</section>
+
+<!-- // SECCIÓN INVITADOS ESPECIALES -->
+<section class="snap-start bg-gray-900 text-white py-20">
+  <div class="container mx-auto px-6 reveal">
+    <div class="text-center mb-12">
+      <i class="fas fa-medal text-5xl text-[var(--gold)] mb-4"></i>
+      <h2 class="text-5xl md:text-6xl font-bold font-serif text-shadow-lg text-white">Invitados Especiales</h2>
+      <p class="text-lg text-gray-400 mt-4 max-w-3xl mx-auto">Un agradecimiento especial a nuestras autoridades y docentes por su invaluable guía y apoyo a lo largo de nuestra formación.</p>
+    </div>
+
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16">
+      
+      <div>
+        <h3 class="footer-title text-center text-3xl mb-8">Autoridades</h3>
+        <div class="grid grid-cols-1 gap-y-4">
+            <div class="teacher-item text-center">ROSARIO VILLAREAL, Marco Aurelio<br><span class="text-sm opacity-70">Decano de la Facultad</span></div>
+            <div class="teacher-item text-center">RODRIGUEZ PEÑA, Victor Raul<br><span class="text-sm opacity-70">Director de EPIS</span></div>
+            <div class="teacher-item text-center">HUAYTA MEZA, Freddy Toribio Raul<br><span class="text-sm opacity-70">Director DAS</span></div>
+            <div class="teacher-item text-center">PARI AGUILAR, Eulogio Alberto<br><span class="text-sm opacity-70">Director de la EPIE</span></div>
+            <div class="teacher-item text-center">MÁRQUEZ CAMARENA, Francisco<br><span class="text-sm opacity-70">Director del DAE</span></div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="footer-title text-center text-3xl mb-8">Docentes Invitados</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+            <div class="teacher-item text-center">SINCHE CRISPIN, Fernando Viterbo</div>
+            <div class="teacher-item text-center">CRISTOBAL LARA, Roly Alcides</div>
+            <div class="teacher-item text-center">ROJAS BUJAICO, John Fredy</div>
+            <div class="teacher-item text-center">MATOS VILA, Gilmer Simón</div>
+            <div class="teacher-item text-center">HUAYTA MEZA, Freddy Toribio</div>
+            <div class="teacher-item text-center">PACHECO MOSCOSO, Luis Enrique</div>
+            <div class="teacher-item text-center">ARIAS VALENZUELA, Edverd Nilton</div>
+            <div class="teacher-item text-center">LANDEO QUISPE, Alex Sandro</div>
+            <div class="teacher-item text-center">GORDILLO FLORES, Rafael Edwin</div>
+            <div class="teacher-item text-center">CAPCHA PAUCAR, Alejandra Luz</div>
+            <div class="teacher-item text-center">SAAVEDRA VILLAR, Pablo</div>
+            <div class="teacher-item text-center">HUINCHO LAPA, Sergio</div>
+            <div class="teacher-item text-center">HUAYLINOS GONZALES, Enrique Grimaldo</div>
+            <div class="teacher-item text-center">SOTO ALVAREZ, Eladio Alfredo</div>
+            <div class="teacher-item text-center">LAZO GALVEZ, Rolando</div>
+            <div class="teacher-item text-center">MUCHA PIÑAS, Roger Javier</div>
+            <div class="teacher-item text-center">JUAN DE DIOS, William Alejandro</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -958,6 +1025,7 @@
             </div>
           </div> -->
           
+          
           <div class="reveal">
             <h3 class="footer-title">Colaboradores</h3>
             <p class="footer-text mx-auto md:mx-0">
@@ -967,7 +1035,7 @@
               <li><strong>Comité Organizador:</strong> Delegados de la Promoción</li>
               <li><strong>Colaborador:</strong> Kevin Ramirez Huamantica</li>
               <li><strong>Colaborador:</strong> Juan Espinoza Vera</li>
-              <li><strong>Colaborador:</strong> @ferzeva19</li>
+              <li><strong>Colaborador:</strong> @ferzeva1</li>
               <!-- <li><strong>Fotografía y Video:</strong></li> -->
             </ul>
           </div>
